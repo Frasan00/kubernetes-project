@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  app:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      MONGO_URI: mongodb://localhost:27017/user_database
+      PORT: "4000"
+      JWT_KEY: 123123123
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_URL: mongodb://mongodb:27017/user_database

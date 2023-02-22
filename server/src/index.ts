@@ -4,10 +4,11 @@ import userRoute from "./routes/userRoute";
 const dotenv = require("dotenv").config();
 
 const PORT = process.env.PORT;
+const mongo_uri = process.env.MONGO_URI;
 const app = express();
 
 // connection to database
-mongoose.connect(process.env.MONGO_URI || "")
+mongoose.connect(mongo_uri || "")
 .then(() => console.log("Connected to the database"))
 .catch((err: any) => console.log("Couldn't connect to the database"));
 
