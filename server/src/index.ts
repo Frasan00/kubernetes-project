@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import userRoute from "./routes/userRoute";
 const dotenv = require("dotenv").config();
+import os from "os";
 
 const PORT = process.env.PORT;
 const mongo_uri = process.env.MONGO_URI;
@@ -14,6 +15,10 @@ mongoose.connect(mongo_uri || "")
 
 app.use(express.json());
 app.use("/user", userRoute);
+
+app.get("/", (req, res) => {
+    res.send("Hello from "+os.hostname());
+})
 
 app.get("*", (req, res) => {
     res.send("Resource not available")
