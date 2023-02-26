@@ -78,3 +78,21 @@
 # Kubectl (cmd for kubernetes)
 
 - Used to interact with a cluster
+
+ # useful commands
+
+- minikube start (optional --driver=virtualbox or other vm, default docker)
+
+- minikube dashboard --url (gives the url of the kubernetes dashborad)
+
+ - kubectl apply -f filename.yaml (starts or restarts a kube component like a pod or a service, depending of the type expressed in the yaml file in the same folder)
+
+ - kubectl get pods
+
+ - kubectl get svc (servicies)
+
+ - minikube delete all --all
+
+ - minikube service service-name (gives the informations about the service like ip addr)
+
+

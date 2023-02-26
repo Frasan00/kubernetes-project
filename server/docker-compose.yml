@@ -7,7 +7,7 @@ services:
       - "4000:4000"
     environment:
       MONGO_URI: mongodb://localhost:27017/user_database
-      PORT: "4000"
+      PORT: 4000
       JWT_KEY: 123123123
     depends_on:
       - mongo
