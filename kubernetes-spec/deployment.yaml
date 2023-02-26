@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - name: nodejs-app
+        image: franved/test:latest
+        # it would be better to store sensitive env var in a secret.yaml file for security
+        env:
+        - name: PORT
+          value: "4000"
+        - name: MONGO_URI
+          value: mongodb://mongo:27017/user_database
+        - name: JWT_KEY
+          value: "123123123"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 4000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mongo
+        image: mongo:latest
+        env:
+        - name: MONGO_URL
+          value: mongodb://mongodb:27017/user_database
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 27017
