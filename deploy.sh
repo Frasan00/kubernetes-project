@@ -4,10 +4,10 @@
 # this file auto-deploys on your cluster all the microservicies
 
 cd kubernetes
-# select one of the above depending on your needs
-minikube addons enable ingress
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
 
+# select one of the above depending on your needs
+#minikube addons enable ingress
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 
 # mongo
 kubectl apply -f mongo-deployment.yml
@@ -31,4 +31,4 @@ echo "Secrets "
 kubectl get secret
 echo " "
 echo "Ingress "
-kubectl get ingress nginx-ingress
+kubectl get ingress nginx-ingress    dfvb
