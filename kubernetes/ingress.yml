@@ -16,4 +16,3 @@ spec:
             name: server-service
             port:
               number: 5000
-

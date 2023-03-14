@@ -6,8 +6,11 @@
 cd kubernetes
 
 # select one of the above depending on your needs
-#minikube addons enable ingress
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+# minikube addons enable ingress
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+sudo microk8s enable ingress
+
+# for microk8s use microk8s kubectl ...
 
 # mongo
 kubectl apply -f mongo-deployment.yml
